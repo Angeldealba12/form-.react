@@ -1,23 +1,54 @@
-import logo from './logo.svg';
 import './App.css';
+import { useForm } from 'react-hook-form';
 
 function App() {
+  const { handleSubmit, register } = useForm();
+
+ const callback = (formValues) => {
+   alert(JSON.stringify(formValues));
+ }
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="MyForm">
+       <form onSubmit={handleSubmit(callback)}>
+        <div className="divs">
+          <label>
+            Name: 
+          </label>
+          <input type="text" {...register('name')}/>
+        </div>
+        <div className="divs">
+          <label>
+            Last Name: 
+          </label>
+          <input type="text" {...register('Last Name')}/>
+        </div>
+        <div className="divs">
+          <label>
+            Age: 
+          </label>
+          <input type="number" {...register('Age')}/>
+        </div>
+        <div className="divs">
+          <label>
+            Email: 
+          </label>
+          <input type="email" {...register('email')}/>
+        </div>
+        <div className="divs">
+          <label>
+            Country: 
+          </label>
+          <input type="text" {...register('country')}/>
+        </div>
+        <div className="divs">
+          <input type="submit" className="btn"/>
+        </div>
+       </form>
+      </div>
     </div>
   );
 }
